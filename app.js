@@ -201,7 +201,7 @@ app.post("/register", async (req, res) => {
 passport.use(new LocalStrategy(
   async (email, password, done) => {
     try {
-      const result = await db.query("SELECT * FROM users WHERE email = $1", [email]);
+      const result = await db.query("SELECT * FROM user_registrations WHERE email = $1", [email]);
       const user = result.rows[0];
 
       if (!user) {                                     
@@ -269,7 +269,7 @@ passport.serializeUser((user, done) => {
 
 passport.deserializeUser(async (id, done) => {
   try {
-    const result = await db.query("SELECT * FROM users WHERE id = $1", [id]);
+    const result = await db.query("SELECT * FROM user_registrations WHERE id = $1", [id]);
     const user = result.rows[0];
 
     if (!user) {
