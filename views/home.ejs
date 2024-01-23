@@ -1,0 +1,45 @@
+
+
+<%- include("partials/header"); -%>
+<h1>HOME</h1>
+<p>
+    <%= StartingContent %>
+</p>
+
+<% console.log(posts) %>
+
+<div class="container">
+
+   
+
+    <% posts.forEach( (post) => { %>
+        <h2><%= post.title %></h2>
+        <small>Date:<%= post.date %></small>
+        
+        <p> <%= post.content.substring(0, 200)+ "...." %> 
+            <a href="/posts/<%= post.title %>">Read More</a>
+        </p> 
+        <small>By: <%= post.author %></small>
+        <% }); %>
+       
+
+
+  
+</div>
+
+<%- include("partials/footer") -%>
+
+
+
+     
+     
+
+
+
+
+
+
+ 
+
+
+
